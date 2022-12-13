@@ -13,4 +13,3 @@ if ($_COOKIE['token']) {
 <form action="http://localhost/exit.php">
     <p><input value="Выход" type="submit"/></p>
 </form>
-

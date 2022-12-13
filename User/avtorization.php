@@ -16,7 +16,8 @@ $user = new User($login, $password);
 
 if ($user->login()) {
     setcookie('token', $_SESSION['token'], time() + 24 * 60 * 60, '/');
-    header('Location: http://localhost/index.php');
+    header( 'Location: /', true, 307 );
+    exit();
 }
 
 

@@ -23,6 +23,10 @@ class User
         $array_db[count($array_db)] = $array_insert;
         $array_result = json_encode($array_db);
         file_put_contents('../DB/DB.json', $array_result);
+        session_start();
+        $_SESSION['name'] = $this->name;
+        $_SESSION['token'] = $this->token;
+
     }
 
     function login()
@@ -32,6 +36,7 @@ class User
         foreach ($array_db as $user) {
             if ($user['login'] == $this->login) {
                 if ($user['password'] == $this->generate_password()) {
+                    session_start();
                     $_SESSION['name'] = $user['name'];
                     $_SESSION['token'] = $user['token'];
                     return true;
@@ -48,8 +53,8 @@ class User
         if (strlen($this->login) < 6) {
             die(json_encode('Логин не должен быть меньше 6ти символов'));
         }
-        if (!preg_match('/^[a-zA-Zа0-9]+$/', $this->login)) {
-            die(json_encode('Логин должен состоять только из цифр и латинских букв'));
+        if (!preg_match('/^[a-zA-Z\d]+$/', $this->login)) {
+            die(('Логин должен состоять обязательно из цифр и латинских букв'));
         }
         if (strlen($this->password) < 6) {
             die (json_encode('Пароль не должен быть меньше 6ти символов'));

@@ -1,6 +1,6 @@
 $('#registration_form').submit(function(){
     $.post(
-        'http://localhost/User/registration.php', // адрес обработчика
+        '../User/registration.php', // адрес обработчика
         $("#registration_form").serialize(), // отправляемые данные
 
         function(msg) { // получен ответ сервера
@@ -13,7 +13,7 @@ $('#registration_form').submit(function(){
 
 $('#avtoriz_form').submit(function(){
     $.post(
-        'http://localhost/User/avtorization.php', // адрес обработчика
+        '../User/avtorization.php', // адрес обработчика
         $("#avtoriz_form").serialize(), // отправляемые данные
 
         function(msg) { // получен ответ сервера
