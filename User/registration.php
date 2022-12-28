@@ -25,6 +25,6 @@ $user->unique();
 $user->create();
 
 setcookie('token', $user->token, time() + 24 * 60 * 60, '/');
-header("Location: http://localhost/index.php",true,301);
+header("Location: ../index.php",true,301);
 exit();
 
